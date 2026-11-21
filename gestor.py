@@ -60,7 +60,7 @@ class GestorReservas:
         self.reservas = []
         self.logger = logger
 
-        def crear(self, cliente, servicio, duracion):
+    def crear(self, cliente, servicio, duracion):
         """Crea una reserva usando try/except/else/finally para dejar rastro."""
         try:
             # Validamos lo básico antes de instanciar la reserva
@@ -82,23 +82,6 @@ class GestorReservas:
                 self.logger.registrar_evento("Validación de duración exitosa (else ejecutado)")
 
         except ErrorSistemaFJ as e:
-            # Registramos el error y lo relanzamos para que main lo sepa
-            self.logger.registrar_error(e, "crear reserva")
-            raise
-        else:
-            # Este bloque solo corre si NO hubo excepción
-            self.reservas.append(reserva)
-            self.logger.registrar_evento(
-                f"Reserva creada para {cliente.nombre} - servicio {servicio.codigo}"
-            )
-            return reserva
-        finally:
-            # Pase lo que pase, dejamos anotado que hubo un intento de reserva
-            self.logger.registrar_evento(
-                f"Intento de creación de reserva finalizado para servicio {servicio.codigo}"
-            )
-
-    def confirmar(self, reserva):
             # Registramos el error y lo relanzamos para que main lo sepa
             self.logger.registrar_error(e, "crear reserva")
             raise
